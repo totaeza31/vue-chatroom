@@ -2,7 +2,10 @@
   <div class="min-h-screen   bg-white">
     <nav class="h-12 bg-gray-50 	">
       <div class="grid grid-cols-3">
-        <div class="h-12 flex items-center ml-4	">
+        <div class="h-12 flex items-center ml-4	 text-blue-700	">
+          <i class="fas fa-angle-left"></i>
+
+
         <router-link to="/" class=" text-red ">Sign in</router-link>
         </div>
         <div class="h-12 flex items-center  ml-6">
@@ -15,28 +18,28 @@
         <ul class="messages" v-chat-scroll>
           <li class="" v-for="message in messages" :key="message.id">
 
-            <div  class="text-right" v-if="message.name === name">
+            <div  class="text-right mr-4" v-if="message.name === name">
               <div  >
-              <span class=" ">{{ message.timestamp | moment }},{{ message.name }}</span>
+              <span class="text-xs	 ">{{ message.timestamp | moment }}  {{ message.name }}</span>
               </div>
               <div  class=" flex justify-end   ">
-              <span class="bg-green-500 p-2	 ml-10  mr-2		">{{ message.content }}</span>
+              <span class="bg-green-500 p-4 ml-10 	rounded-t-2xl  rounded-l-2xl	">{{ message.content }}</span>
             </div>
 </div>
 
 
-            <div class="" v-if="message.name !== name">
+            <div class="ml-4" v-if="message.name !== name">
                <div >
-              <span class=" ">{{ message.timestamp | moment }},{{ message.name }}</span>
+              <span class=" text-xs 	">{{ message.timestamp | moment }}  {{ message.name }}</span>
               </div>
                 <div class=" flex " >
-              <span class="	bg-red-500 p-2	mr-10 ml-2  ">{{ message.content }}</span>
+              <span class="	bg-red-500 p-4	mr-10  	rounded-t-2xl  rounded-r-2xl ">{{ message.content }}</span>
               </div> 
             </div>
           </li>
         </ul>
       </div>
-      <div class="object-bottom	">
+      <div class="  object-bottom 	">
         <form @submit.prevent="addMessage" >
           <!-- <label>New Message from {{ name }} (enter to add):</label> -->
           <!-- <input type="text" v-model="newMessage" /> -->
@@ -52,8 +55,8 @@
           <!-- <button class="btn green" name="button">Add</button> -->
         </form>
       </div>
+      </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -100,7 +103,7 @@ export default {
 </script>
 <style>
 .messages {
-  max-height: 530px;
+  max-height: 640px;
   overflow: auto;
 }
 #right{

@@ -1,23 +1,11 @@
 <template>
   <div >
-    <div class="py-8 mx-20  sm:text-left px-8 max-w-sm = bg-white rounded-xl shadow-md space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
-  <div class="text-center space-y-2 sm:text-left">
-    <div class="space-y-0.5">
-      <p class="text-lg text-black font-semibold">
-        Erin Lindford
-      </p>
-      <p class="text-gray-500 font-medium">
-        Product Engineer sddsdsdsd sdsdsd sdssssssssss sssssssssssssssssdsdsd
-      </p>
-    </div>
-    
-  </div>
-</div>
+ 
     <form @submit.prevent="enterChat">
       <div>
-        <nav class="h-14 bg-white">
+        <nav class="h-14 bg-white shadow-2xl flex  justify-center">
           <div class="text-5xl">
-            <p2>Sign In</p2>
+            <p2 class="  items-center " >Sign In</p2>
           </div>
         </nav>
         <main class="bg-white">
@@ -57,7 +45,7 @@
                 />
 
                 <p2 v-if="feedback">{{ feedback }}</p2>
-                <button class="btn green">Enter Chat</button>
+              
 
                 <!-- Replace with your content -->
 
@@ -69,7 +57,9 @@
       <button class="btn green">Enter Chat</button>
               </div> -->
               </div>
-            </div>
+                <div class=" flex  justify-center">
+                <button class="bg-blue-500 hover:bg-blue-light text-white font-bold py-2 px-4 border-b-4 border-blue-dark hover:border-blue-900 rounded">Enter Chat</button>
+            </div></div>
           </div>
         </main>
       </div>
