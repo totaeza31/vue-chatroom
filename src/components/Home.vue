@@ -37,28 +37,23 @@
                 </h5>
                 <label for="first_name" class="sr-only">Enter your name:</label>
                 <input
+                  v-model="room"
                   name="first_name"
                   type="text"
                   required
                   class="appearance-none rounded-t-2xl rounded-b-2xl relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="TAILWIND"
+                  placeholder="TAILWIND" 
                 />
+           
 
                 <p2 v-if="feedback">{{ feedback }}</p2>
               
-
-                <!-- Replace with your content -->
-
-                <!-- <div
-                class=" "  >
-                    <h4>Enter your name:</h4>
-      <input type="text" v-model="name" />
-      <p2 v-if="feedback">{{ feedback }}</p2>
-      <button class="btn green">Enter Chat</button>
-              </div> -->
               </div>
+              
+
+              
                 <div class=" flex  justify-center">
-                <button class="bg-blue-500 hover:bg-blue-light text-white font-bold py-2 px-4 border-b-4 border-blue-dark hover:border-blue-900 rounded">Enter Chat</button>
+                <button class="bg-blue-500 hover:bg-blue-light text-white font-bold py-2 px-4 border-b-4 border-blue-dark hover:border-blue-900 rounded transition duration-500 ease-in-out bg-blue-600 hover:bg-red-600 transform hover:-translate-y-1 hover:scale-110">Enter Chat</button>
             </div></div>
           </div>
         </main>
@@ -73,13 +68,15 @@ export default {
   data() {
     return {
       name: null,
+      room:'gundb',
       feedback: null,
     };
   },
   methods: {
     enterChat() {
       if (this.name) {
-        this.$router.push({ name: "Chat", params: { name: this.name } });
+        this.$router.push({ name: "Chat", params: { name: this.name }  });
+      
       } else {
         this.feedback = "You must enter a name to join";
       }
@@ -104,5 +101,6 @@ p2 {
   margin-top:10px;
   margin-bottom: 10px;
 }
+
 
 </style>

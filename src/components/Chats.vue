@@ -19,11 +19,15 @@
           <li class="" v-for="message in messages" :key="message.id">
 
             <div  class="text-right mr-4" v-if="message.name === name">
+             
               <div  >
               <span class="text-xs	 ">{{ message.timestamp | moment }}  {{ message.name }}</span>
               </div>
-              <div  class=" flex justify-end   ">
-              <span class="bg-green-500 p-4 ml-10 	rounded-t-2xl  rounded-l-2xl	">{{ message.content }}</span>
+              <div  class=" flex justify-end ml-10  ">
+              <button @click ='deleteMessage(message.id)' class="p4"><i class="fas fa-trash-alt"></i>
+
+</button>
+              <span class="bg-green-500 p-4 ml-1 	rounded-t-2xl  rounded-l-2xl	">{{ message.room }}{{ message.content }}</span>
             </div>
 </div>
 
@@ -69,6 +73,7 @@ export default {
   props: ["name"],
   data() {
     return {
+      
       newMessage: null,
       feedback: null,
     };
@@ -86,8 +91,18 @@ export default {
     getMessage() {
       this.$store.dispatch("loadMessage");
     },
+    deleteMessage(doc){
+if(confirm('Are you sure ?')){
+  db.collection("messagest").doc(doc).delete().then(function(){
+      console.log("Document successfully deleted!");
+  }).catch(function(error){
+    console.log("Error removing documrnt:",error);
+  });
+}
+    },
     async addMessage() {
-      if (this.newMessage) {
+     
+      if (this.newMessage) { 
         await db.collection("messagest").add({
           name: this.name,
           content: this.newMessage,

@@ -13,6 +13,7 @@ export default new Vuex.Store({
   },
   actions: {
     loadMessage: firestoreAction(context => {
+     
        context.bindFirestoreRef('messages',db.collection('messagest').orderBy('timestamp'))
     })
   },
