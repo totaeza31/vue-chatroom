@@ -33,7 +33,7 @@
               <span class=" text-xs 	">{{ message.timestamp | moment }}  {{ message.name }}</span>
               </div>
                 <div class=" flex " >
-              <span class="	bg-red-500 p-4	mr-10  	rounded-t-2xl  rounded-r-2xl ">{{ message.content }}</span>
+              <span class="bg-gray-400	 p-4	mr-10  	rounded-t-2xl  rounded-r-2xl ">{{ message.content }}</span>
               </div> 
             </div>
           </li>
