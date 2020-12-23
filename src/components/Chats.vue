@@ -18,7 +18,7 @@
         <ul class="messages" v-chat-scroll>
           <li class="" v-for="message in messages" :key="message.id">
 
-            <div  class="text-right mr-4" v-if="message.name === name">
+            <div  class="text-right mr-4" v-if="message.name === name && message.roomName === room">
              
               <div  >
               <span class="text-xs	 ">{{ message.timestamp | moment }}  {{ message.name }}</span>
@@ -32,7 +32,7 @@
 </div>
 
 
-            <div class="ml-4" v-if="message.name !== name">
+            <div class="ml-4" v-if="message.name !== name  && message.roomName === room">
                <div >
               <span class=" text-xs 	">{{ message.timestamp | moment }}  {{ message.name }}</span>
               </div>
@@ -47,15 +47,21 @@
         <form @submit.prevent="addMessage" >
           <!-- <label>New Message from {{ name }} (enter to add):</label> -->
           <!-- <input type="text" v-model="newMessage" /> -->
+          <div class="grid grid-cols-8 gap-4">
             <input
                   v-model="newMessage"
                   type="text"
                   required 
-                  class="appearance-none rounded-t-2xl rounded-b-2xl relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md  focus:outline-none focus:ring-indigo-500 ring-2  focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  class="appearance-none rounded-t-2xl rounded-b-2xl col-span-7 relative block  px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md  focus:outline-none focus:ring-indigo-500 ring-2  focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Messages"
                   
-                />
+                />  <button class="mr-4" name="button"><i class="fas fa-paper-plane"></i>
+
+</button>
           <p class="red-text" v-if="feedback">{{ feedback }}</p>
+
+                  
+</div>
           <!-- <button class="btn green" name="button">Add</button> -->
         </form>
       </div>
@@ -70,7 +76,7 @@ import moment from "moment";
 
 export default {
   name: "Chat",
-  props: ["name"],
+  props: ["name","room"],
   data() {
     return {
       
@@ -106,6 +112,7 @@ if(confirm('Are you sure ?')){
         await db.collection("messagest").add({
           name: this.name,
           content: this.newMessage,
+          roomName: this.room,
           timestamp: Date.now(),
         });
         (this.newMessage = ""), (this.feedback = "");

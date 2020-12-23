@@ -68,14 +68,14 @@ export default {
   data() {
     return {
       name: null,
-      room:'gundb',
+      room: 'gundb',
       feedback: null,
     };
   },
   methods: {
     enterChat() {
       if (this.name) {
-        this.$router.push({ name: "Chat", params: { name: this.name }  });
+        this.$router.push({ name: "Chat", params: { name: this.name , room: this.room }  });
       
       } else {
         this.feedback = "You must enter a name to join";
